@@ -19,4 +19,4 @@ if(Posts.find().count() == 0){
                 comment: "The best place to download illegal content"
               });
 
-}
+} 
