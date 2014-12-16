@@ -36,6 +36,8 @@ Template.postItem.helpers({
 });
 
 Template.postsList.helpers({
-  posts: postData
+  posts: function(){
+    return Posts.find();
+  }
 
 });
