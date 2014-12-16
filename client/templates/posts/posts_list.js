@@ -29,9 +29,9 @@ Template.postItem.helpers({
 });
 
 Template.postItem.helpers({
-  comment: function(){
-    var c = this.comment.toUpperCase();
-    return c;
+  title: function(){
+    var title = this.title.toUpperCase();
+    return title;
   }
 });
 
