@@ -9,4 +9,5 @@ mizzao:bootstrap-3
 coffeescript
 underscore
 iron:router
+sacha:spin
 

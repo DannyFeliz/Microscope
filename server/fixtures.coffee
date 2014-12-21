@@ -14,3 +14,19 @@ if Posts.find().count() == 0
       title: "Taringa"
       url: "https:taringa.net"
       comment: "The best place to download illegal content"
+
+    Posts.insert
+      title: "Apple"
+      url: "https:apple.com"
+      comment: "iPhone and iPad creators"
+
+    Posts.insert
+      title: "Toyota"
+      url: "https:toyota.net"
+      comment: "Best Vehicles ever"
+
+    Posts.insert
+      title: "ITLA"
+      url: "https:itla.edu.do"
+      comment: "My Institute of technology"
+
