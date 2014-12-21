@@ -7,10 +7,10 @@ Router.configure
 
 Router.map ->
   @route 'postsList', {path: "/"}
-  @route 'postPage', {path: "/posts/:_id"},
-                     {data: ->
-                       Posts.findOne(@params._id)
-                     }
+
+  @route 'postPage', {path: "/posts/:_id", data: ->
+                          Posts.findOne(@params._id)
+                      }
 
 Router.onBeforeAction 'loading'
 Router.onBeforeAction('dataNotFound', {only: 'postPage'});

@@ -1,3 +1,3 @@
-Template.postPage.helper
+Template.postPage.helpers
   log: ->
     console.log @
