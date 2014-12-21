@@ -1,2 +1,2 @@
 Meteor.publish "posts", ->
-  Posts.find({})
+  Posts.find()
