@@ -11,6 +11,7 @@ Router.map ->
   @route 'postPage', {path: "/posts/:_id", data: ->
                           Posts.findOne(_id:@params._id)
                       }
+  @route 'postSubmit', {path: "/submit"}
 
 Router.onBeforeAction 'loading'
 Router.onBeforeAction('dataNotFound', {only: 'postPage'});
