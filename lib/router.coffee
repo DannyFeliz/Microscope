@@ -9,7 +9,7 @@ Router.map ->
   @route 'postsList', {path: "/"}
 
   @route 'postPage', {path: "/posts/:_id", data: ->
-                          Posts.findOne(@params._id)
+                          Posts.findOne(_id:@params._id)
                       }
 
 Router.onBeforeAction 'loading'
