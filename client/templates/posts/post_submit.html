@@ -1,5 +1,5 @@
 <template name="postSubmit">
-    {{#if currentUser}}
+
     <form class="main form">
         <div class="form-group">
             <label class="control-label" for="url">URL</label>
@@ -17,7 +17,5 @@ your post" class="form-control"/>
         </div>
         <input type="submit" value="Submit" class="btn btn-primary"/>
     </form>
-      {{else}}
-        {{notLogged}}
-    {{/if}}
+
 </template>

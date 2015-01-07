@@ -1,8 +1,3 @@
-Template.postSubmit.helpers
-  notLogged:->
-    console.log "No est'as logeado"
-    Router.go "/"
-
 Template.postSubmit.events
   "submit form":(e) ->
     e.preventDefault()
