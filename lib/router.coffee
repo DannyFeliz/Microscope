@@ -13,11 +13,16 @@ Router.map ->
                       }
   @route 'postSubmit', {path: "/submit"}
 
+requireLogin = ->
+  unless Meteor.userId()
+    if Meteor.loggingIn()
+      @render.loadingTemplate
+      @next()
+    else
+      @render "accessDenied"
+  else
+    @next()
 
 Router.onBeforeAction 'loading'
 Router.onBeforeAction('dataNotFound', {only: 'postPage'})
-Router.onBeforeAction ->
-  unless Meteor.userId()
-    @render "accessDenied"
-  else
-    @next()
+Router.onBeforeAction requireLogin, {only: "postSubmit"}
