@@ -6,9 +6,18 @@ Template.postSubmit.events
       title: $(e.target).find("[name=title]").val()
     }
 
-    post._id = Posts.insert(post)
-    console.log "Post ID Es: #{post._id}"
-    Router.go "postPage", post
+    Meteor.call("postInsert",post,(error,result) ->
+      if error
+        console.log error.reason
+        return alert error.reason
+
+      if result.postExists
+        alert "El post ya existe"
+      Router.go "postPage", {_id: result._id}
+    )
+
+
+
 
 
 
