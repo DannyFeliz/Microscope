@@ -13,6 +13,10 @@ Router.map ->
                       }
   @route 'postSubmit', {path: "/submit"}
 
+  @route 'postByAuthor', {path: "/author/:username", data:->
+                          Posts.findOne({author:@params.username})
+                         }
+
 requireLogin = ->
   unless Meteor.userId()
     if Meteor.loggingIn()
