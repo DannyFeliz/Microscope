@@ -1,5 +1,12 @@
 @Posts = new Mongo.Collection "posts"
 
+@validatePost = (postAttribute) ->
+  errors = {}
+  errors.title = "Please fill in a headline"  unless postAttribute.title
+  errors.url = "Please fill in a URL"  unless postAttribute.url
+
+  errors
+
 
 Posts.allow
   update: (userId, doc) ->
@@ -9,7 +16,8 @@ Posts.allow
 
 Posts.deny
   update: (userId, post, fieldNames) ->
-    return (_.without(fieldNames, 'url', 'title').length > 0)
+    errors = validatePost(modifier.$set)
+    return errors.title or errors.url
 
 
 
@@ -22,6 +30,7 @@ Meteor.methods
     expect(postAttribute.url).to.be.a("String")
 
     user = Meteor.user()
+    console.log user.username
     moment().locale("es")
     console.log moment.locale()
     currentDate = moment.utc()._d
@@ -33,13 +42,17 @@ Meteor.methods
       author: user.username
       submitted: currentDate
     })
-
+    error = validatePost(postAttribute)
+    if error.title or error.url
+      throw new Meteor.Error("invalid-post","Debes introducir un titulo y una URL","No pueden estar vacio")
     postWithSameLink = Posts.findOne({url: postAttribute.url})
     if postWithSameLink
       return{
         postExists: true
         _id: postWithSameLink._id
+        author: user.username
       }
+
     postId = Posts.insert(post)
 
     return {

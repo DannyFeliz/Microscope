@@ -1,3 +1,5 @@
+
+
 Template.postEdit.events
   "submit form": (e) ->
     e.preventDefault()
@@ -10,9 +12,14 @@ Template.postEdit.events
     expect(postProperties.title).to.be.a("string")
     expect(postProperties.url).to.be.a("string")
 
+
+    errors = validatePost(post)
+    if errors.title or errors.url
+      return Session.set("postSubmitErrors",errors)
+
     Posts.update({_id:currentPostId},{$set:postProperties}, (error) ->
       if error
-        alert error.reason
+        throwError(error.reason)
       else
         Router.go "postPage", {_id: currentPostId}
     )
