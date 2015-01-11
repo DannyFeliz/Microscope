@@ -12,7 +12,7 @@ Template.postEdit.events
 
     Posts.update({_id:currentPostId},{$set:postProperties}, (error) ->
       if error
-        alert error.reason
+        throwError(error.reason)
       else
         Router.go "pagePost", {_id: currentPostId}
     )
@@ -22,4 +22,4 @@ Template.postEdit.events
     if confirm("Delete this post?")
       currentPostId = @._id
       Posts.remove(currentPostId)
-      Router.go("postList")
+      Router.go("postsList")

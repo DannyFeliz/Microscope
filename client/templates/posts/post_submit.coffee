@@ -9,10 +9,10 @@ Template.postSubmit.events
     Meteor.call("postInsert",post,(error,result) ->
       if error
         console.log error.reason
-        return alert error.reason
+        throwError(error.reason)
 
       if result.postExists
-        alert "El post ya existe"
+        throwError("El post ya existe")
       Router.go "postPage", {_id: result._id}
     )
 

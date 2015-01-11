@@ -9,6 +9,7 @@ Meteor.methods
     expect(postAttribute.url).to.be.a("String")
 
     user = Meteor.user()
+    console.log user.username
     moment().locale("es")
     console.log moment.locale()
     currentDate = moment.utc()._d
@@ -26,6 +27,7 @@ Meteor.methods
       return{
         postExists: true
         _id: postWithSameLink._id
+        author: user.username
       }
     postId = Posts.insert(post)
 
