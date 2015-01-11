@@ -32,7 +32,6 @@ requireLogin = ->
   unless Meteor.userId()
     if Meteor.loggingIn()
       @render.loadingTemplate
-      @next()
     else
       @render "accessDenied"
   else

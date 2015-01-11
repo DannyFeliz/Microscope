@@ -14,12 +14,13 @@ Template.postEdit.events
       if error
         throwError(error.reason)
       else
-        Router.go "pagePost", {_id: currentPostId}
+        Router.go "postPage", {_id: currentPostId}
     )
+
   "click .delete": (e) ->
     e.preventDefault()
 
     if confirm("Delete this post?")
       currentPostId = @._id
-      Posts.remove(currentPostId)
+      Posts.remove({_id: currentPostId})
       Router.go("postsList")
