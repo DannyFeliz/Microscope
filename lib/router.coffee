@@ -32,6 +32,7 @@ requireLogin = ->
   unless Meteor.userId()
     if Meteor.loggingIn()
       @render.loadingTemplate
+      @next()
     else
       @render "accessDenied"
   else
@@ -40,3 +41,4 @@ requireLogin = ->
 Router.onBeforeAction 'loading'
 Router.onBeforeAction('dataNotFound', {only: 'postPage'})
 Router.onBeforeAction requireLogin, {only: "postSubmit"}
+
