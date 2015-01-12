@@ -52,6 +52,9 @@ npm-bcrypt@0.7.7
 observe-sequence@1.0.4
 ordered-dict@1.0.2
 practicalmeteor:chai@1.9.2_3
+practicalmeteor:loglevel@1.1.0_3
+practicalmeteor:munit@2.1.2
+practicalmeteor:sinon@1.10.3_2
 random@1.0.2
 reactive-dict@1.0.5
 reactive-var@1.0.4
@@ -67,6 +70,8 @@ spacebars-compiler@1.0.4
 srp@1.0.2
 stylus@1.0.6
 templating@1.0.10
+test-helpers@1.0.3
+tinytest@1.0.4
 tracker@1.0.4
 ui@1.0.5
 underscore@1.0.2

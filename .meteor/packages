@@ -15,3 +15,5 @@ practicalmeteor:chai
 momentjs:moment
 
 dannyfeliz:errors
+tinytest
+practicalmeteor:munit
