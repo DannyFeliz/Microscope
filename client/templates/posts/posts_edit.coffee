@@ -1,5 +1,4 @@
 
-
 Template.postEdit.events
   "submit form": (e) ->
     e.preventDefault()
@@ -12,14 +11,13 @@ Template.postEdit.events
     expect(postProperties.title).to.be.a("string")
     expect(postProperties.url).to.be.a("string")
 
-
-    errors = validatePost(post)
+    errors = validatePost(postProperties)
     if errors.title or errors.url
-      return Session.set("postSubmitErrors",errors)
+      return Session.set("postEditErrors",errors)
 
     Posts.update({_id:currentPostId},{$set:postProperties}, (error) ->
       if error
-        throwError(error.reason)
+        Errors.throw(error.reason)
       else
         Router.go "postPage", {_id: currentPostId}
     )
@@ -31,3 +29,14 @@ Template.postEdit.events
       currentPostId = @._id
       Posts.remove({_id: currentPostId})
       Router.go("postsList")
+
+
+Template.postEdit.created = ->
+  Session.set('postEditErrors', {})
+
+Template.postEdit.helpers
+  errorMessage: (field) ->
+    Session.get('postEditErrors')[field]
+
+  errorClass: (field) ->
+    (if !!Session.get("postEditErrors")[field] then "has-error" else "")

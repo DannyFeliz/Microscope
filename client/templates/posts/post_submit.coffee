@@ -6,12 +6,6 @@ Template.postSubmit.events
       title: $(e.target).find("[name=title]").val()
     }
 
-    @validatePost = (post) ->
-      errors = {}
-      errors.title = "Please fill in a headline"  unless post.title
-      errors.url = "Please fill in a URL"  unless post.url
-
-      errors
 
     errors = validatePost(post)
     if errors.title or errors.url
@@ -20,10 +14,10 @@ Template.postSubmit.events
     Meteor.call("postInsert",post,(error,result) ->
       if error
         console.log error.reason
-        throwError(error.reason)
+        Errors.throw(error.reason)
 
       if result.postExists
-        throwError("El post ya existe")
+        Errors.throw("El post ya existe")
       Router.go "postPage", {_id: result._id}
     )
 

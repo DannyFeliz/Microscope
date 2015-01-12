@@ -15,7 +15,7 @@ Posts.allow
     return doc and doc.userId is userId
 
 Posts.deny
-  update: (userId, post, fieldNames) ->
+  update: (userId, post, fieldNames, modifier) ->
     errors = validatePost(modifier.$set)
     return errors.title or errors.url
 
