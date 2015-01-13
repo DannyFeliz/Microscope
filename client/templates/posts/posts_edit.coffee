@@ -12,6 +12,7 @@ Template.postEdit.events
     expect(postProperties.url).to.be.a("string")
 
     errors = validatePost(postProperties)
+    Errors.throw("Error",errors)
     if errors.title or errors.url
       return Session.set("postEditErrors",errors)
 
