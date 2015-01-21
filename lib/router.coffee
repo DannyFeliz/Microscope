@@ -25,7 +25,7 @@ Router.map ->
   @route 'postByAuthor',
   path: "/author/:username",
   data: ->
-    Posts.findOne({author:@params.username})
+    allByAuthor: Posts.find({author:@params.username})
 
 
 requireLogin = ->

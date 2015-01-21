@@ -9,8 +9,3 @@ Template.postItem.helpers
   log: ->
     console.log @
 
-Template.layout.events
-  'click .isSelected': ->
-    if isSelected
-      console.log "Estoy seleccionado"
-    else
