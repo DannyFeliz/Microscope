@@ -17,7 +17,7 @@ if (api.export)
 });
 
 Package.onTest(function(api,where){
-  api.use(['dannyfeliz:errors',"practicalmeteor:munit"],"client");
+  api.use(['dannyfeliz:errors',"practicalmeteor:munit","practicalmeteor:sinon"],"client");
   api.use(["tinytest","test-helpers"], "client");
 
   api.addFiles("errors-tests.js","client");

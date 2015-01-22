@@ -17,3 +17,4 @@ momentjs:moment
 dannyfeliz:errors
 tinytest
 practicalmeteor:munit
+practicalmeteor:sinon

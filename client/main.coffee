@@ -1,4 +1,3 @@
-Meteor.subscribe "posts"
 
 Meteor.startup ->
   Tracker.autorun ->

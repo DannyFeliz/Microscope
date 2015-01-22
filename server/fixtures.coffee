@@ -1,32 +1,55 @@
-if Posts.find().count() == 0
+if Posts.find().count() is 0
+  now = getCurrentDate()
 
-    Posts.insert
-        title: "Google Dominicana"
-        url: "https:google.com.do"
-        comment: "They are the best B|"
+  tomId = Meteor.users.insert({
+    profile: { name: 'Tom Coleman' }
+  })
 
-    Posts.insert
-      title: "Meteor"
-      url: "https:meteor.com"
-      comment: "A good Node.js Framework"
+  tom = Meteor.users.findOne(tomId)
+  sachaId = Meteor.users.insert({
+    profile: { name: 'Sacha Greif' }
+  })
+  sacha = Meteor.users.findOne(sachaId)
 
-    Posts.insert
-      title: "Taringa"
-      url: "https:taringa.net"
-      comment: "The best place to download illegal content"
+  telescopeId = Posts.insert({
+    title: 'Introducing Telescope'
+    userId: sacha._id
+    author: sacha.profile.name
+    url: 'http://sachagreif.com/introducing-telescope/'
+    submitted: now
+    commentsCount: 2
+  })
 
-    Posts.insert
-      title: "Apple"
-      url: "https:apple.com"
-      comment: "iPhone and iPad creators"
+  Comments.insert({
+    postId: telescopeId
+    userId: tom._id
+    author: tom.profile.name
+    submitted: now
+    body: 'Interesting project Sacha can, I get involved?'
+  })
 
-    Posts.insert
-      title: "Toyota"
-      url: "https:toyota.net"
-      comment: "Best Vehicles ever"
+  Comments.insert({
+    postId: telescopeId
+    userId: sacha._id
+    author: sacha.profile.name
+    submitted: now
+    body: 'You sure can Tom!'
+  })
 
-    Posts.insert
-      title: "ITLA"
-      url: "https:itla.edu.do"
-      comment: "My Institute of technology"
+  Posts.insert({
+    title: 'Meteor'
+    userId: tom._id
+    author: tom.profile.name
+    url: 'http://meteor.com'
+    submitted: now
+  })
+
+  Posts.insert({
+    title: 'The Meteor Book'
+    userId: tom._id
+    author: tom.profile.name
+    url: 'http://themeteorbook.com'
+    submitted: now
+    commentsCount: 0
+  })
 

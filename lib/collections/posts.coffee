@@ -34,6 +34,7 @@ Meteor.methods
       userId: user._id
       author: user.username
       submitted: @getCurrentDate
+      commentsCount: 0
     })
     error = validatePost(postAttribute)
     if error.title or error.url

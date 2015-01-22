@@ -150,3 +150,10 @@ body {
     margin-bottom: 5px;
     pointer-events: auto;
 }
+hr{
+    margin-top: 7px;
+    margin-bottom: 5px;
+}
+.comment-body:first-letter{
+    text-transform:uppercase;
+}
