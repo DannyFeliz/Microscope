@@ -3,7 +3,7 @@ Router.configure
   loadingTemplate: 'loading',
   noFoundTemplate: 'noFound',
   waitOn: ->
-    return Meteor.subscribe('posts')
+    return [Meteor.subscribe('posts'), Meteor.subscribe('notifications')]
 
 
 Router.route "/",
