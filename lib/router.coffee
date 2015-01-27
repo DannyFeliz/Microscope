@@ -3,11 +3,8 @@ Router.configure
   loadingTemplate: 'loading',
   noFoundTemplate: 'noFound',
   waitOn: ->
-    return [Meteor.subscribe('posts'), Meteor.subscribe('notifications')]
+    return Meteor.subscribe('notifications')
 
-
-Router.route "/",
-  name: 'postsList'
 
 Router.route "/posts/:_id",
   name: 'postPage',
@@ -29,6 +26,18 @@ Router.route "/author/:username",
 
   data: ->
     allByAuthor: Posts.find({author:@params.username})
+
+Router.route "/:postsLimit?",
+  name: 'postsList'
+  waitOn: ->
+    limit = parseInt(@params.postsLimit) || 5
+    Meteor.subscribe("posts", {sort: {submitted: -1}, limit: limit})
+  data: ->
+    limit = parseInt(@params.postsLimit) || 5
+    return {
+      posts: Posts.find({}, {sort: {submitted: -1}, limit: limit})
+    }
+
 
 requireLogin = ->
   unless Meteor.userId()

@@ -52,4 +52,16 @@ if Posts.find().count() is 0
     submitted: now
     commentsCount: 0
   })
+###
+i = 0
+while i < 10
+  Posts.insert
+    title: 'Cuanta Razon page '+(i+1)
+    userId: "QJoftmcMxo4vKnHqn"
+    author: "DanyFelz"
+    url: 'http://www.cuantarazon.com/ultimos/p/'+(i+1)
+    submitted: getCurrentDate()
+    commentsCount: 0
+  i++
 
+###
