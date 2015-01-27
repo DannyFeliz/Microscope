@@ -1,4 +1,7 @@
+Spies = Munit.spies
 describe ("Collection Errors", function(){
+        spies.create("throw",Errors,"throw");
+
 
     it("Errors - collection works", function(test) {
         expect(Errors.collection.find({}).count()).to.be.equal(0);
@@ -7,17 +10,14 @@ describe ("Collection Errors", function(){
         Errors.collection.remove({});
     });
 
-    it("Errors - template works", function(test, done) {
-        Errors.throw('A new error!');
-    expect(Errors.collection.find({}).count()).to.be.equal(1);
-    // render the template
-    UI.insert(UI.render(Template.meteorErrors), document.body);
 
-    Meteor.setTimeout(function() {
-        expect(Errors.collection.find({}).count()).to.be.equal(1);
-        done();
-    }, 3500)
+    it("Errors - should add an Error", function(test){
+        Errors.collection.remove({});
+        Errors.throw("New error");
+        var error = Errors.collection.findOne();
+        expect(error.message).to.be.equal("New error");
+    });
 
-    })
+
 });
 

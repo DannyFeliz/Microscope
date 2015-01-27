@@ -3,30 +3,32 @@ Router.configure
   loadingTemplate: 'loading',
   noFoundTemplate: 'noFound',
   waitOn: ->
-    Meteor.subscribe 'posts'
+    return [Meteor.subscribe('posts'), Meteor.subscribe('notifications')]
 
-Router.map ->
-  @route 'postsList',
-  path: "/"
 
-  @route 'postPage',
-  path: "/posts/:_id",
+Router.route "/",
+  name: 'postsList'
+
+Router.route "/posts/:_id",
+  name: 'postPage',
+  waitOn: ->
+    Meteor.subscribe('comments', @params._id)
   data: ->
     Posts.findOne(_id:@params._id)
 
-  @route 'postSubmit',
-  path: "/submit"
+Router.route "/submit",
+  name: 'postSubmit'
 
-  @route "postEdit",
-  path: "/posts/:_id/edit"
+Router.route "/posts/:_id/edit",
+  name: "postEdit",
   data: ->
     Posts.findOne(_id:@params._id)
 
-  @route 'postByAuthor',
-  path: "/author/:username",
+Router.route "/author/:username",
+  name: 'postByAuthor',
+
   data: ->
     allByAuthor: Posts.find({author:@params.username})
-
 
 requireLogin = ->
   unless Meteor.userId()

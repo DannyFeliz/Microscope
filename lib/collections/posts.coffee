@@ -30,17 +30,11 @@ Meteor.methods
     expect(postAttribute.url).to.be.a("String")
 
     user = Meteor.user()
-    console.log user.username
-    moment().locale("es")
-    console.log moment.locale()
-    currentDate = moment.utc()._d
-    currentDate = moment().format("dddd, MMMM Do YYYY, h:mm:ss a")
-    console.log "Fecha: #{currentDate}"
-
     post = _.extend(postAttribute, {
       userId: user._id
       author: user.username
-      submitted: currentDate
+      submitted: @getCurrentDate
+      commentsCount: 0
     })
     error = validatePost(postAttribute)
     if error.title or error.url
