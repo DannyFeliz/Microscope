@@ -35,6 +35,8 @@ Meteor.methods
       author: user.username
       submitted: @getCurrentDate
       commentsCount: 0
+      upvoters: []
+      votes: 0
     })
     error = validatePost(postAttribute)
     if error.title or error.url
@@ -53,3 +55,12 @@ Meteor.methods
       _id: postId
     }
 
+  upvote: (postId) ->
+    post = Posts.findOne(postId)
+    throw new Meteor.Error("invalid", "Post not found")  unless post
+    throw new Meteor.Error("invalid", "Already upvoted this post")  if _.include(post.upvoters, @userId)
+    Posts.update( post._id,{
+      $addToSet: {upvoters: @userId}
+      $inc: {votes: 1}
+      }
+    )

@@ -18,6 +18,8 @@ if Posts.find().count() is 0
     url: 'http://sachagreif.com/introducing-telescope/'
     submitted: now
     commentsCount: 2
+    upvoters: []
+    votes: 0
   })
 
   Comments.insert({
@@ -25,7 +27,7 @@ if Posts.find().count() is 0
     userId: tom._id
     author: tom.profile.name
     submitted: now
-    body: 'Interesting project Sacha can, I get involved?'
+    body: 'Interesting project Sacha can I get involved?'
   })
 
   Comments.insert({
@@ -42,6 +44,9 @@ if Posts.find().count() is 0
     author: tom.profile.name
     url: 'http://meteor.com'
     submitted: now
+    commentsCount: 0
+    upvoters: []
+    votes: 0
   })
 
   Posts.insert({
@@ -51,6 +56,8 @@ if Posts.find().count() is 0
     url: 'http://themeteorbook.com'
     submitted: now
     commentsCount: 0
+    upvoters: []
+    votes: 0
   })
 ###
 i = 0
@@ -62,6 +69,7 @@ while i < 10
     url: 'http://www.cuantarazon.com/ultimos/p/'+(i+1)
     submitted: getCurrentDate()
     commentsCount: 0
-  i++
+    upvoters: []
+    votes: 0
+  i++###
 
-###

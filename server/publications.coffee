@@ -1,6 +1,8 @@
-Meteor.publish "posts", (options) ->
-  expect(options.sort).to.be.an("object")
-  expect(options.limit).to.be.a("Number")
+Meteor.publish "posts", ->
+  options = {
+    sort: {submitted: -1}
+  }
+
   Posts.find({}, options)
 
 Meteor.publish "comments", (postId) ->
