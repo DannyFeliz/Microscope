@@ -25,6 +25,9 @@ Template.postSubmit.events
 Template.postSubmit.created = ->
   Session.set("postSubmitErrors",{})
 
+
+
+
 Template.postSubmit.helpers
   errorMessage: (field) ->
     Session.get("postSubmitErrors")[field]

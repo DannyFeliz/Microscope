@@ -40,7 +40,7 @@ Meteor.methods
     })
     error = validatePost(postAttribute)
     if error.title or error.url
-      throw new Meteor.Error("invalid-post","Debes introducir un titulo y una URL","No pueden estar vacio")
+      throw new Meteor.Error("invalid-post","You should introduce a title and an URL","Can't not be empty")
     postWithSameLink = Posts.findOne({url: postAttribute.url})
     if postWithSameLink
       return{
