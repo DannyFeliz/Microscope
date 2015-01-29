@@ -14,7 +14,15 @@ apse" data-target="#navigation">
             <div class="collapse navbar-collapse" id="navigation">
                 {{#if currentUser}}
                   <ul class="nav navbar-nav">
-                      <li><a href="{{pathFor 'postSubmit'}}">Submit Post</a></li>
+
+                      <li>
+
+                          <a href="{{pathFor 'postSubmit'}}">
+                              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Submit Post
+                          </a>
+
+                      </li>
+
                       <li class="dropdown">
                           {{> notifications}}
                       </li>
@@ -25,7 +33,7 @@ apse" data-target="#navigation">
                 </ul>
             </div>
             <div>
-                    <span>Voted</span> - <div class="circle-white"></div> 
+                    <span>Voted</span> - <div class="circle-white"></div>
                     <span>Not voted</span> - <div class="circle-blue"></div>
             </div>
         </div>

@@ -32,7 +32,7 @@ Meteor.methods
     user = Meteor.user()
     post = _.extend(postAttribute, {
       userId: user._id
-      author: user.username
+      author: user.profile.name || user.username
       submitted: @getCurrentDate
       commentsCount: 0
       upvoters: []
@@ -46,7 +46,7 @@ Meteor.methods
       return{
         postExists: true
         _id: postWithSameLink._id
-        author: user.username
+        author: Meteor.user().profile.name || Meteor.user().username
       }
 
     postId = Posts.insert(post)

@@ -14,7 +14,7 @@ Meteor.methods
 
     comment = _.extend(commentAttributes,{
       userId: user._id
-      author: user.username
+      author: Meteor.user().profile.name || Meteor.user().username
       submitted: getCurrentDate()
     })
     Posts.update(comment.postId, {$inc: {commentsCount: 1}})

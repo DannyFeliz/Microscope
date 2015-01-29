@@ -7,15 +7,15 @@ if Posts.find().count() is 0
 
   tom = Meteor.users.findOne(tomId)
   sachaId = Meteor.users.insert({
-    profile: { name: 'Sacha Greif' }
+    profile: { name: 'DanyFelz' }
   })
   sacha = Meteor.users.findOne(sachaId)
 
   telescopeId = Posts.insert({
-    title: 'Introducing Telescope'
+    title: 'Programmers social media'
     userId: sacha._id
     author: sacha.profile.name
-    url: 'http://sachagreif.com/introducing-telescope/'
+    url: 'https://www.github.com/'
     submitted: now
     commentsCount: 2
     upvoters: []
@@ -27,7 +27,7 @@ if Posts.find().count() is 0
     userId: tom._id
     author: tom.profile.name
     submitted: now
-    body: 'Interesting project Sacha can I get involved?'
+    body: 'El mejor lugar para compatir codigo'
   })
 
   Comments.insert({
@@ -35,7 +35,7 @@ if Posts.find().count() is 0
     userId: sacha._id
     author: sacha.profile.name
     submitted: now
-    body: 'You sure can Tom!'
+    body: 'Completamente de acuerdo.'
   })
 
   Posts.insert({
@@ -50,10 +50,10 @@ if Posts.find().count() is 0
   })
 
   Posts.insert({
-    title: 'The Meteor Book'
+    title: 'Aprender Git'
     userId: tom._id
     author: tom.profile.name
-    url: 'http://themeteorbook.com'
+    url: 'http://git-scm.com'
     submitted: now
     commentsCount: 0
     upvoters: []
