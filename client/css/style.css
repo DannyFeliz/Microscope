@@ -157,3 +157,23 @@ hr{
 .comment-body:first-letter{
     text-transform:uppercase;
 }
+
+
+.circle-blue {
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background-color: #337ab7;
+    display: inline-block;
+    margin-top: 2px;
+}
+
+.circle-white {
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    background-color: #ffffff;
+    display: inline-block;
+    margin-top: 2px;
+    border: solid 1px #666666;
+}

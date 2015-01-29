@@ -9,7 +9,7 @@ apse" data-target="#navigation">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{pathFor 'postsList'}}">Microscope</a>
+                <a class="navbar-brand" href="{{pathFor 'postsList'}}">FavLinker</a>
             </div>
             <div class="collapse navbar-collapse" id="navigation">
                 {{#if currentUser}}
@@ -23,6 +23,10 @@ apse" data-target="#navigation">
                 <ul class="nav navbar-nav navbar-right">
                   {{> loginButtons}}
                 </ul>
+            </div>
+            <div>
+                    <span>Voted</span> - <div class="circle-white"></div> 
+                    <span>Not voted</span> - <div class="circle-blue"></div>
             </div>
         </div>
     </nav>
